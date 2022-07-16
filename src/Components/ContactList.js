@@ -3,11 +3,13 @@ import ContactCard from "./ContactCard";
 
 const ContactList = ({contacts})=>{
 
+
     const renderContactList  = contacts.map((contact)=>{
+        console.log(contact)
         return    <ContactCard contact={contact} key={contact.id} />
     })
 
-    return  <div className="ui cell list">{renderContactList}</div>
+    return  <div className="ui divided items">{renderContactList}</div>
     
 }
 
