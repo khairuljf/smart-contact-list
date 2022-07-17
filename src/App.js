@@ -12,6 +12,11 @@ const App = () => {
     const Local_storage_key = "contacts"
 
     const [contacts, setContacts] = useState([])
+    const [filter, setFilter] = useState('')
+
+    let filterContact = contacts.filter((contact)=>{
+            return contact.name.toLowerCase().indexOf(filter.toLowerCase()) >=0;
+    })
 
     const addContactHandler = (contact)=>{
         setContacts([...contacts, {id:uuid(), ...contact}])
@@ -22,6 +27,10 @@ const App = () => {
             return contact.id !== id
         })
         setContacts(newContact)
+    }
+
+    const setFilterHandler = (data)=>{
+        setFilter(data)
     }
 
     useEffect(()=>{
@@ -42,9 +51,9 @@ const App = () => {
 
     return (
         <div className="ui container">
-         <Header />
+        <Header />
         <AddContact  addContactHandler={addContactHandler}/>
-        <ContactList contacts={contacts} removeContactHandler={removeContactHandler} />
+        <ContactList contacts={filterContact} removeContactHandler={removeContactHandler} setFilterHandler={setFilterHandler} />
         </div>
     )
 }
