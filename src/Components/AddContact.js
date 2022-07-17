@@ -11,7 +11,7 @@ const AddContact = ({addContactHandler}) =>{
   
     const addContact =(e)=>{
         e.preventDefault();
-        addContactHandler({ id:uuid(), name:Name, email:email, mobile:mobile})
+        addContactHandler({ name:Name, email:email, mobile:mobile})
         setName('')
         setEmail('')
         setmobile('')

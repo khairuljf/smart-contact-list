@@ -21,8 +21,6 @@ const ContactCard = ({contact, removeById}) =>{
 
             </div>
     
-
-        
        )
 
 }
