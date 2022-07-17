@@ -1,14 +1,9 @@
 import React from "react";
 
 
-const ContactCard = ({contact, removeContactHandler}) =>{
+const ContactCard = ({contact, removeById}) =>{
    
     const {id, name, email, mobile } = contact
-    
-    const removeContact = (id)=>{
-        removeContactHandler(id)
-       // console.log(id)
-    }
 
     return(
 
@@ -22,7 +17,7 @@ const ContactCard = ({contact, removeContactHandler}) =>{
                     <div>{email}</div>
                 </div>
 
-                <button className="ui red  button" onClick={()=>removeContact(id)}><i className="trash alternate outline icon" style={{color:"#fff", marginTop:'7px'}}></i></button>
+                <button className="ui red  button" onClick={()=>removeById(id)}><i className="trash alternate outline icon" style={{color:"#fff", marginTop:'7px'}}></i></button>
 
             </div>
     

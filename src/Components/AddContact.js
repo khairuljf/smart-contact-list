@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import uuid from "react-uuid";
 
-
 const AddContact = ({addContactHandler}) =>{
 
 
@@ -12,7 +11,7 @@ const AddContact = ({addContactHandler}) =>{
   
     const addContact =(e)=>{
         e.preventDefault();
-        addContactHandler({id:uuid(), name:Name, email:email, mobile:mobile})
+        addContactHandler({ id:uuid(), name:Name, email:email, mobile:mobile})
         setName('')
         setEmail('')
         setmobile('')
