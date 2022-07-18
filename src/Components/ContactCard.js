@@ -17,7 +17,10 @@ const ContactCard = ({contact, removeById}) =>{
                 </div>
 
                 <div className="phone-action">
-                    <div><a href={"tel:" + mobile} >{mobile}</a></div>
+                    <div>
+                        {mobile} <a href={"tel:" + mobile} ><i className="phone volume icon"></i></a>
+                         <a href={"sms:" + mobile} ><i className="envelope outline icon"></i></a>
+                     </div>
                 </div>
 
                 <button className="ui red  button" onClick={()=>removeById(id)}><i className="trash alternate outline icon" style={{color:"#fff", marginTop:'7px'}}></i></button>
