@@ -13,8 +13,11 @@ const ContactCard = ({contact, removeById}) =>{
                 </div>
                 <div className="middle aligned content">
                     <div className="header">{name}</div>
-                    <div>{mobile}</div>
                     <div>{email}</div>
+                </div>
+
+                <div className="phone-action">
+                    <div><a href={"tel:" + mobile} >{mobile}</a></div>
                 </div>
 
                 <button className="ui red  button" onClick={()=>removeById(id)}><i className="trash alternate outline icon" style={{color:"#fff", marginTop:'7px'}}></i></button>
@@ -26,3 +29,4 @@ const ContactCard = ({contact, removeById}) =>{
 }
 
 export default ContactCard
+
