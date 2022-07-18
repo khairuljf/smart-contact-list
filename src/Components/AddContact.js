@@ -1,7 +1,11 @@
 import React, {useState} from "react";
-import uuid from "react-uuid";
+import {useNavigate} from 'react-router-dom';
 
-const AddContact = ({addContactHandler}) =>{
+const AddContact = ({addContactHandler }) =>{
+    
+    const navigate = useNavigate();
+ 
+ 
 
 
     const [Name, setName] = useState('')
@@ -15,6 +19,7 @@ const AddContact = ({addContactHandler}) =>{
         setName('')
         setEmail('')
         setmobile('')
+        navigate('/')
     }
 
 
