@@ -12,8 +12,8 @@ const ContactList = ({contacts, removeContactHandler, setFilterHandler})=>{
         <div className="card-wrap">
             <form className="ui form">
                 <div className="field">
-                    <label> Name </label>
-                    <input type="text" placeholder="Name"  onChange={(e)=>setFilterHandler(e.target.value)} />
+                    <label> Search Contact </label>
+                    <input type="text" placeholder="Search Contact"  onChange={(e)=>setFilterHandler(e.target.value)} />
                 </div>
             </form>
         <div className="ui divided items">{renderContactList}</div>

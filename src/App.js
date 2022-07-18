@@ -5,6 +5,7 @@ import Header from "./Components/Header";
 import AddContact from "./Components/AddContact";
 import ContactList  from "./Components/ContactList";
 import uuid from "react-uuid";
+import { BrowserRouter,  Routes,Route, } from "react-router-dom";
 
 
 const App = () => {
@@ -51,9 +52,16 @@ const App = () => {
 
     return (
         <div className="ui container">
-        <Header />
-        <AddContact  addContactHandler={addContactHandler}/>
-        <ContactList contacts={filterContact} removeContactHandler={removeContactHandler} setFilterHandler={setFilterHandler} />
+            <BrowserRouter>
+                <Header />
+                <Routes>
+                    <Route path="/" element={<ContactList contacts={filterContact} removeContactHandler={removeContactHandler} setFilterHandler={setFilterHandler} />} />
+                    <Route path="add" element={<AddContact  addContactHandler={addContactHandler}/>} />
+                    <Route  path="*" element={  <main style={{ padding: "1rem" }}>  <p>There's nothing here!</p>  </main>   } />
+                </Routes>
+                
+            </BrowserRouter>
+       
         </div>
     )
 }
