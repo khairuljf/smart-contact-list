@@ -5,6 +5,7 @@ import Header from "./Components/Header";
 import AddContact from "./Components/AddContact";
 import ContactList  from "./Components/ContactList";
 import uuid from "react-uuid";
+import ContactDetails from "./Components/ContactDetail";
 import { BrowserRouter,  Routes,Route, } from "react-router-dom";
 
 
@@ -57,6 +58,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<ContactList contacts={filterContact} removeContactHandler={removeContactHandler} setFilterHandler={setFilterHandler} />} />
                     <Route path="add" element={<AddContact  addContactHandler={addContactHandler}/>} />
+                    <Route path="contact/:id" element={<ContactDetails  />} />
                     <Route  path="*" element={  <main style={{ padding: "1rem" }}>  <p>There's nothing here!</p>  </main>   } />
                 </Routes>
                 
