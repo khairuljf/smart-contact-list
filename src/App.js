@@ -7,6 +7,7 @@ import ContactList  from "./Components/ContactList";
 import uuid from "react-uuid";
 import ContactDetails from "./Components/ContactDetail";
 import { BrowserRouter,  Routes,Route, } from "react-router-dom";
+import api from './api/contact'
 
 
 const App = () => {
@@ -15,6 +16,12 @@ const App = () => {
 
     const [contacts, setContacts] = useState([])
     const [filter, setFilter] = useState('')
+
+
+    // Make a request for a user with a given ID
+
+    
+
 
     let filterContact = contacts.filter((contact)=>{
             return contact.name.toLowerCase().indexOf(filter.toLowerCase()) >=0;
@@ -36,12 +43,23 @@ const App = () => {
     }
 
     useEffect(()=>{
-      const getContacts =   JSON.parse(localStorage.getItem(Local_storage_key))
-    
-      if(getContacts){
-        setContacts(getContacts)
-      }
       
+
+     // const getContacts =   JSON.parse(localStorage.getItem(Local_storage_key))
+     //   if(getContacts){
+    //     setContacts(getContacts)
+    //   }
+      
+    const retriveContacts = axios.get('http://localhost:3000/contacts')
+    
+    const allContact  = retriveContacts();
+    console.log(allContact)
+    if(allContact){
+        setContacts(allContact)
+    }
+   
+    
+    
     },[])
 
 
