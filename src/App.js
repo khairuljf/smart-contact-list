@@ -7,8 +7,7 @@ import ContactList  from "./Components/ContactList";
 import uuid from "react-uuid";
 import ContactDetails from "./Components/ContactDetail";
 import { BrowserRouter,  Routes,Route, } from "react-router-dom";
-import api from './api/contact'
-
+import axios from "axios";
 
 const App = () => {
 
@@ -28,10 +27,23 @@ const App = () => {
     })
 
     const addContactHandler = (contact)=>{
-        setContacts([...contacts, {id:uuid(), ...contact}])
+        
+        const request = {
+            id:uuid(),
+            ...contact
+        }
+
+        const response = axios.post("http://localhost:3000/contacts", request)
+        .then(response => setContacts([...contacts, response.data]));
+
+        //setContacts([...contacts, {id:uuid(), ...contact}])
     }
 
     const removeContactHandler = (id) =>{
+
+        axios.delete(`http://localhost:3000/contacts/${id}`)
+
+
         const newContact = contacts.filter((contact)=>{
             return contact.id !== id
         })
@@ -50,13 +62,8 @@ const App = () => {
     //     setContacts(getContacts)
     //   }
       
-    const retriveContacts = axios.get('http://localhost:3000/contacts')
-    
-    const allContact  = retriveContacts();
-    console.log(allContact)
-    if(allContact){
-        setContacts(allContact)
-    }
+    axios .get("http://localhost:3000/contacts")
+    .then(response => setContacts(response.data));
    
     
     
